@@ -13,10 +13,10 @@
   	<h2 align="center"> auto Upload file </h2>
   	<br><br>
   	<label>Select Image</label>
-  	<input class="form-control" type="file" name="file" id="file"/>
+  	<input class="form-control" type="file" name="file" id="file" style="width: 50%;" />
     <input type="button" name="sub" class="btn btn-success" id="sub" value="Upload" onclick="go_in();">
      <label for = "name">Player Details</label>
-     <textarea class = "form-control" rows = "3" placeholder = "Player Details"></textarea>
+     <textarea  id="listMe" name="listMe" class = "form-control" rows = "3" placeholder = "Player Details" style="width: 50%;"></textarea>
 
      <input type="button" name="show" class="btn btn-success" id="show" value="show" onclick="displayAll();">
     
@@ -52,7 +52,8 @@
   var files = fileUpload.files[0];
   
      formData.append('file',files);
-     formData.append('action','displayPictureOnFontEnd');    
+     formData.append('action','displayPictureOnFontEnd');
+     formData.append('texts',$("#listMe").val());    
      
 
              $.ajax({
