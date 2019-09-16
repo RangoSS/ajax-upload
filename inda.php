@@ -13,23 +13,47 @@
   	<h2 align="center"> auto Upload file </h2>
   	<br><br>
   	<label>Select Image</label>
-  	<input type="file" name="file" id="file"/>
-    <input type="button" name="sub" id="sub" value="Upload" onclick="go_in();">
+  	<input class="form-control" type="file" name="file" id="file"/>
+    <input type="button" name="sub" class="btn btn-success" id="sub" value="Upload" onclick="go_in();">
+     <label for = "name">Player Details</label>
+     <textarea class = "form-control" rows = "3" placeholder = "Player Details"></textarea>
+
+     <input type="button" name="show" class="btn btn-success" id="show" value="show" onclick="displayAll();">
+    
   	<br/>
   	<span id="uploaded_image"></span>
+
+    <span id="display_records">gjgjg</span>
   </div>
 </body>
 </html>
 
 <script type="text/javascript">
 	
+  function displayAll(){
 
+      $.ajax({
+              url:"upload.php",
+              method:"GET",
+              data:{action:"displayAll"},
+            
+              success:function(response)
+              {
+                   var ret = JSON.parse(response)
+                 // $('#display_records').html(response);
+                  console.log(ret);
+              }
+             })
+  
+}
   function go_in(){
     var formData = new FormData();
   var fileUpload = $("#file").get(0);
   var files = fileUpload.files[0];
   
-     formData.append('file',files);    
+     formData.append('file',files);
+     formData.append('action','displayPictureOnFontEnd');    
+     
 
              $.ajax({
               url:"upload.php",

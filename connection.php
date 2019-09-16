@@ -5,7 +5,7 @@ class Connecting {
 var $host="localhost";
 var $user="root";
 var $password="";
-var $db_table="barter";
+var $db_table="cars";
 
 
 public function getConnection(){
